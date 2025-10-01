@@ -3,7 +3,10 @@
 # Exit on error
 set -o errexit
 
-# Install dependencies using a more specific command
+# Ensure pip is installed and upgraded
+python3.9 -m pip install --upgrade pip
+
+# Install dependencies
 python3.9 -m pip install -r requirements.txt
 
 # Run collectstatic
