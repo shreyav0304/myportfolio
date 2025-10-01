@@ -3,11 +3,14 @@
 # Exit on error
 set -o errexit
 
-# Ensure pip is installed and upgraded
+# 1. Use ensurepip to install pip if it is missing
+python3.9 -m ensurepip
+
+# 2. Upgrade pip to the latest version
 python3.9 -m pip install --upgrade pip
 
-# Install dependencies
+# 3. Install project dependencies
 python3.9 -m pip install -r requirements.txt
 
-# Run collectstatic
+# 4. Run collectstatic
 python3.9 manage.py collectstatic --noinput
