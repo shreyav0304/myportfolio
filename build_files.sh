@@ -10,5 +10,5 @@ python3.9 -m pip install --upgrade pip
 # Install project dependencies
 python3.9 -m pip install -r requirements.txt
 
-# Run collectstatic
-python3.9 -m manage.py collectstatic --noinput
+# Run collectstatic (without the -m flag)
+python3.9 manage.py collectstatic --noinput
