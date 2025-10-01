@@ -10,10 +10,9 @@ db.sqlite3
 venv/
 .env
 
-# Static files collected by collectstatic
-staticfiles/
-
 # Editor/OS specific
 .vscode/
 .DS_Store
+
+# Vercel CLI
 .vercel
