@@ -25,18 +25,15 @@ def contact_view(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-        # Send the email
         send_mail(
             f'Contact Form Submission from {name}',
             message,
             email,
-            [settings.EMAIL_HOST_USER], # Send to your own email configured in settings.py
+            [settings.EMAIL_HOST_USER],
             fail_silently=False,
         )
         
-        # Add a success message and redirect to the homepage
         messages.success(request, 'Thank you! Your message has been sent successfully.')
         return redirect('index')
 
-    # If it's a GET request, just go to the homepage
     return redirect('index')

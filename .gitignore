@@ -16,3 +16,4 @@ staticfiles/
 # Editor/OS specific
 .vscode/
 .DS_Store
+.vercel
