@@ -19,6 +19,11 @@ application = get_wsgi_application()
 # Wrap with WhiteNoise for static files on Vercel
 from whitenoise import WhiteNoise
 BASE_DIR = Path(__file__).resolve().parent.parent
-application = WhiteNoise(application, root=str(BASE_DIR / 'staticfiles_build'))
+# Serve files from STATIC_ROOT at the /static/ URL prefix
+application = WhiteNoise(
+	application,
+	root=str(BASE_DIR / 'staticfiles_build'),
+	prefix='static/'
+)
 
 app = application
