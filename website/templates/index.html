@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -18,7 +18,7 @@
 <body>
     
     <nav class="navbar">
-        <div class="logo">MyPortfolio</div>
+        <a href="#home" class="logo">MyPortfolio</a>
         <ul class="nav-links">
           <li><a href="#home" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -26,9 +26,17 @@
           <li><a href="#certificates">Certificates</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-      </nav>
+        <!-- Hamburger Icon for Mobile Nav -->
+        <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="nav-overlay"></div>
       
-
     <main>
         <section id="home">
             <h1>Hello, I'm Shreya</h1>
@@ -44,32 +52,22 @@
 
         <section id="about">
             <h2>About Me</h2>
-            <div class="about-content">
+            <div class="about-content card">
                 <p>I'm a passionate and results-driven full-stack developer with a strong focus on building modern, user-friendly applications. With expertise in <strong>Python</strong>, <strong>Django</strong>, and <strong>JavaScript</strong>, I thrive on creating seamless digital experiences from front to back. My goal is to craft clean, efficient, and scalable code that solves real-world problems.</p>
-                
                 <h3>My Journey</h3>
                 <p>I am currently pursuing my Engineering in AIML (Artificial Intelligence and Machine Learning). This academic focus has deepened my passion for technology, and I'm very excited to apply my skills to innovative AIML projects in the future. My journey into software development started with a curiosity for how things work, and that curiosity quickly grew into a passion for building and creating.</p>
-        
-                <h3>What I Do</h3>
-                <ul>
-                    <li><strong>Backend Development:</strong> I specialize in building robust and secure server-side applications using Python and the Django framework. I'm skilled in designing and managing databases, developing REST APIs, and implementing authentication systems.</li>
-                    <li><strong>Frontend Development:</strong> I enjoy bringing designs to life with clean and semantic HTML, dynamic CSS, and interactive JavaScript. I focus on creating intuitive user interfaces that are both beautiful and functional.</li>
-                    <li><strong>Problem-Solving:</strong> I love tackling complex challenges. I'm a firm believer in the power of a logical approach and am always eager to learn new technologies to find the best possible solution.</li>
-                </ul>
-        
-                <p>When I'm not coding, you can find me staying up-to-date with the latest industry trends, contributing to open-source projects, or working on personal projects to hone my skills.</p>
             </div>
         </section>
 
         <section id="projects">
             <h2>My Projects</h2>
             <div class="projects-container">
-                <div class="project-card">
+                <div class="project-card card">
                     <img src="{% static 'images/project1.png' %}" alt="Image of Event Management Hub" class="project-image">
                     <h3>Event Management Hub</h3>
                     <p>A web application for managing events, built with Django, HTML, CSS, and JavaScript. It allows users to create, edit, and RSVP to events, featuring a user-friendly interface and real-time notifications.</p>
                 </div>
-                <div class="project-card">
+                <div class="project-card card">
                     <img src="{% static 'images/project2.png' %}" alt="Image of Flight Booking System" class="project-image">
                     <h3>Flight Booking System</h3>
                     <p>A full-stack web application for searching and booking flights. This project utilizes Django for the backend, managing user authentication and flight data, with a clean and intuitive front end.</p>
@@ -79,18 +77,14 @@
 
         <section id="certificates">
             <h2>My Certificates</h2>
-            <p class="section-subtitle">
-                A collection of my achievements, certifications, and professional milestones.
-            </p>
-
             <div class="certificates-grid">
-                <div class="certificate-card highlight-card">
+                <div class="certificate-card card">
                     <h3>All Certificates</h3>
                     <p>Click below to explore my complete set of certificates stored in Google Drive.</p>
                     <a href="https://drive.google.com/drive/folders/12zV18VyWC5lBapC0ua0SFd1NYBlNv0m6?usp=sharing" 
                        target="_blank" 
-                       class="btn-primary">
-                        📂 View All Certificates
+                       class="btn-filled">
+                        View All Certificates
                     </a>
                 </div>
             </div>
@@ -98,37 +92,26 @@
         
         <section id="contact">
             <h2>Contact Me</h2>
-
-            {% if messages %}
-                <div class="messages" style="padding: 15px; margin-bottom: 20px; border-radius: 5px; background-color: #28a745; color: white; text-align: center;">
-                    {% for message in messages %}
-                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            <div class="contact-container">
-              <form method="POST" action="{% url 'contact' %}">
-                {% csrf_token %}
-
-                <label for="name" class="sr-only">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-                
-                <label for="email" class="sr-only">Your Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-                
-                <label for="message" class="sr-only">Your Message</label>
-                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                
-                <button type="submit" class="btn-filled">Send</button>
-              </form>
+             <div class="contact-container card">
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <p class="{{ message.tags }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <form method="POST" action="{% url 'contact' %}" novalidate>
+                    {% csrf_token %}
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn-filled">Send Message</button>
+                </form>
             </div>
         </section>
         
         <footer>
-            <div class="footer-text">
-                <p>&copy; 2025 Shreya. All rights reserved.</p>
-            </div>
+            <p>&copy; 2025 Shreya. All rights reserved.</p>
             <div class="footer-social">
                 <a href="https://github.com/shreyav0304" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
             </div>
@@ -137,3 +120,4 @@
     <script src="{% static 'js/script.js' %}" defer></script>
 </body>
 </html>
+
