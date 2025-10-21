@@ -9,13 +9,8 @@
   ],
   "routes": [
       {
-          "src": "/static/(.*)",
-          "dest": "/staticfiles_build/$1"
-      },
-      {
           "src": "/(.*)",
           "dest": "portfolio/wsgi.py"
       }
-  ],
-  "outputDirectory": "staticfiles_build"
+  ]
 }
