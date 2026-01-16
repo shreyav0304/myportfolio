@@ -134,21 +134,58 @@ h2::after {
   border-radius: 2px;
 }
 .card {
-  background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px); border-radius: 15px; padding: 40px;
+  background: rgba(255, 255, 255, 0.03); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px); 
+  border-radius: 15px; 
+  padding: 40px;
   transition: all 0.3s ease;
+  will-change: transform;
 }
-.card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); }
+
+.card:hover { 
+  transform: translateY(-10px); 
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); 
+  border-color: rgba(0, 255, 231, 0.2);
+}
 
 /* --- BUTTONS --- */
 .btn-outline, .btn-filled {
-  padding: 12px 30px; border-radius: 50px; font-weight: 600; text-decoration: none;
-  transition: all 0.3s ease; border: 2px solid var(--accent-color);
+  display: inline-block;
+  padding: 12px 30px; 
+  border-radius: 50px; 
+  font-weight: 600; 
+  text-decoration: none;
+  transition: all 0.3s ease; 
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  font-size: 1rem;
+  will-change: transform;
 }
-.btn-outline { color: var(--accent-color); }
-.btn-filled { background: var(--accent-color); color: var(--primary-bg); }
-.btn-outline:hover { background: var(--accent-color); color: var(--primary-bg); box-shadow: 0 0 15px var(--accent-color); }
-.btn-filled:hover { background: transparent; color: var(--accent-color); box-shadow: 0 0 15px var(--accent-color); }
+
+.btn-outline { 
+  color: var(--accent-color); 
+  background: transparent;
+}
+
+.btn-filled { 
+  background: var(--accent-color); 
+  color: var(--primary-bg); 
+}
+
+.btn-outline:hover { 
+  background: var(--accent-color); 
+  color: var(--primary-bg); 
+  box-shadow: 0 0 15px var(--accent-color); 
+  transform: translateY(-2px);
+}
+
+.btn-filled:hover { 
+  background: transparent; 
+  color: var(--accent-color); 
+  box-shadow: 0 0 15px var(--accent-color); 
+  transform: translateY(-2px);
+}
 
 /* --- HERO SECTION --- */
 #home { 
@@ -289,19 +326,108 @@ h2::after {
 }
 
 /* --- CONTACT SECTION --- */
-.contact-container { max-width: 800px; margin: 60px auto 0; }
-form { display: flex; flex-direction: column; gap: 20px; text-align: left; }
-form input, form textarea { padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0,0,0,0.2); color: var(--text-color); font-size: 1rem; }
-form textarea { min-height: 120px; resize: vertical; }
-.messages { padding: 15px; margin-bottom: 20px; border-radius: 5px; color: white; text-align: center; }
-.messages .success { background-color: #28a745; }
-.messages .error { background-color: #dc3545; }
+.contact-container { 
+  max-width: 800px; 
+  margin: 60px auto 0; 
+}
+
+form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px; 
+  text-align: left; 
+}
+
+form input, form textarea { 
+  padding: 15px; 
+  border-radius: 8px; 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  background: rgba(0,0,0,0.2); 
+  color: var(--text-color); 
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+form input:focus, form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(0, 255, 231, 0.3);
+  background: rgba(0,0,0,0.3);
+}
+
+form textarea { 
+  min-height: 120px; 
+  resize: vertical; 
+}
+
+form button {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+.messages { 
+  padding: 15px; 
+  margin-bottom: 20px; 
+  border-radius: 8px; 
+  color: white; 
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.messages .success { 
+  background-color: #28a745; 
+  border: 1px solid #1e7e34;
+}
+
+.messages .error { 
+  background-color: #dc3545; 
+  border: 1px solid #bd2130;
+}
 
 /* --- FOOTER --- */
-footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 100px; }
-.footer-social { margin-top: 20px; display: flex; justify-content: center; gap: 25px; }
-.footer-social a { font-size: 1.8rem; color: var(--light-gray); transition: color 0.3s; }
-.footer-social a:hover { color: var(--accent-color); }
+footer { 
+  text-align: center; 
+  padding: 40px 5%; 
+  border-top: 1px solid rgba(255, 255, 255, 0.1); 
+  margin-top: 100px; 
+}
+
+footer p {
+  margin-bottom: 0;
+  color: var(--light-gray);
+}
+
+.footer-social { 
+  margin-top: 20px; 
+  display: flex; 
+  justify-content: center; 
+  gap: 25px; 
+}
+
+.footer-social a { 
+  font-size: 1.8rem; 
+  color: var(--light-gray); 
+  transition: all 0.3s ease; 
+  display: inline-block;
+}
+
+.footer-social a:hover { 
+  color: var(--accent-color); 
+  transform: translateY(-3px);
+}
 
 /* --- HAMBURGER MENU & MOBILE NAV --- */
 .hamburger { 
@@ -309,13 +435,17 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
   cursor: pointer;
   z-index: 1001;
   padding: 5px;
+  background: transparent;
+  border: none;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.hamburger div { 
+.hamburger span { 
   width: 28px; 
   height: 3px; 
   background-color: var(--text-color); 
-  margin: 5px 0; 
+  display: block;
   transition: all 0.3s ease;
   border-radius: 2px;
 }
@@ -374,7 +504,7 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
   }
 
   .nav-links {
-    margin-left: 0; /* reset desktop push-right */
+    margin-left: 0;
     padding-right: 0;
     position: fixed; 
     right: 0; 
@@ -393,7 +523,6 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
     z-index: 999;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
     gap: 40px;
-    margin-left: 0;
   }
 
   .nav-links li { 
@@ -412,19 +541,32 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
   }
 
   .hamburger { 
-    display: block; 
+    display: flex; 
   }
 
-  /* Adjust sections for mobile */
   section {
     padding: 80px 5%;
     scroll-margin-top: 70px;
   }
 
+  #home {
+    min-height: 85vh;
+    padding: 100px 5% 80px;
+  }
+
   #certificates {
     padding-top: 100px;
     padding-bottom: 80px;
-    min-height: 90vh;
+    min-height: 85vh;
+  }
+
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .about-content {
+    padding: 30px;
   }
 }
 
@@ -434,7 +576,6 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
     font-size: 1.5rem;
   }
 
-  /* Hero section adjustments */
   #home {
     min-height: 80vh;
     padding: 100px 5% 80px;
@@ -442,6 +583,7 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
 
   #home h1 {
     font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 15px;
   }
 
   #home p {
@@ -461,24 +603,20 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
     text-align: center;
   }
 
-  /* Section padding adjustments */
   section {
-    padding: 80px 5%;
-    scroll-margin-top: 70px;
+    padding: 70px 5%;
   }
 
   #certificates {
-    padding-top: 100px;
-    min-height: 75vh;
+    padding-top: 90px;
+    min-height: 70vh;
   }
 
-  /* Projects grid */
   .projects-container {
     grid-template-columns: 1fr;
     gap: 25px;
   }
 
-  /* Cards */
   .card {
     padding: 25px;
   }
@@ -503,13 +641,11 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
     max-width: 500px;
   }
 
-  /* Social icons */
   .social-icons a {
     font-size: 1.5rem;
     margin: 0 10px;
   }
 
-  /* Footer */
   footer {
     padding: 30px 5%;
     margin-top: 60px;
@@ -517,6 +653,15 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
 
   .footer-social a {
     font-size: 1.5rem;
+  }
+
+  .about-content {
+    padding: 25px;
+  }
+
+  form input, form textarea {
+    padding: 13px;
+    font-size: 0.95rem;
   }
 }
 
@@ -530,7 +675,7 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
     font-size: 1.3rem;
   }
 
-  .hamburger div {
+  .hamburger span {
     width: 25px;
   }
 
@@ -554,7 +699,7 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
 
   #certificates {
     padding-top: 80px;
-    min-height: 80vh;
+    min-height: 75vh;
     padding-bottom: 60px;
   }
 
@@ -592,6 +737,10 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
   .certificate-card {
     padding: 25px;
   }
+
+  .project-image {
+    height: 180px;
+  }
 }
 
 /* Large screens */
@@ -611,6 +760,15 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
 
   .projects-container {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    max-width: 1400px;
+  }
+
+  .about-content {
+    max-width: 1000px;
+  }
+
+  .contact-container {
+    max-width: 900px;
   }
 }
 
@@ -639,9 +797,13 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
   .nav-links a {
     font-size: 1.05rem;
   }
+
+  .projects-container {
+    max-width: 1600px;
+  }
 }
 
-/* Medium desktop screens - ensure nav items stay on right */
+/* Medium desktop screens */
 @media screen and (min-width: 993px) and (max-width: 1199px) {
   .navbar {
     padding: 18px 7%;
@@ -667,7 +829,7 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
     font-size: 1.2rem;
   }
 
-  .hamburger div {
+  .hamburger span {
     width: 22px;
     height: 2.5px;
   }
@@ -742,6 +904,46 @@ footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255, 2
 
   .about-content {
     padding: 18px;
+  }
+
+  .project-image {
+    height: 160px;
+  }
+}
+
+/* Landscape mode for mobile devices */
+@media screen and (max-width: 992px) and (orientation: landscape) {
+  #home {
+    min-height: 100vh;
+    padding: 80px 5% 60px;
+  }
+
+  section {
+    padding: 60px 5%;
+  }
+
+  #certificates {
+    min-height: 100vh;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .hamburger,
+  .nav-overlay,
+  footer {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  section {
+    page-break-inside: avoid;
+    padding: 20px;
   }
 }
 

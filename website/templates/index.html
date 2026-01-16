@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shreya's Portfolio</title>
+    <meta name="description" content="Shreya's Portfolio - Full-stack developer specializing in Python, Django, and JavaScript. Explore my projects and connect with me.">
+    <meta name="keywords" content="Shreya, Portfolio, Full-stack Developer, Python, Django, JavaScript, AIML">
+    <meta name="author" content="Shreya">
+    <meta name="theme-color" content="#00ffe7">
+    <title>Shreya's Portfolio | Full-stack Developer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,41 +21,41 @@
 </head>
 <body>
     
-    <nav class="navbar">
-        <a href="#home" class="logo">MyPortfolio</a>
-        <ul class="nav-links">
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certificates">Certificates</a></li>
-          <li><a href="#contact">Contact</a></li>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="logo" aria-label="Home - MyPortfolio">MyPortfolio</a>
+        <ul class="nav-links" role="menubar">
+          <li role="none"><a href="#home" class="active" role="menuitem">Home</a></li>
+          <li role="none"><a href="#about" role="menuitem">About</a></li>
+          <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
+          <li role="none"><a href="#certificates" role="menuitem">Certificates</a></li>
+          <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
         </ul>
         <!-- Hamburger Icon for Mobile Nav -->
-        <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
+        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </button>
     </nav>
     
     <!-- Mobile Menu Overlay -->
     <div class="nav-overlay"></div>
       
     <main>
-        <section id="home">
-            <h1>Hello, I'm Shreya</h1>
+        <section id="home" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Hello, I'm Shreya</h1>
             <p>A passionate developer creating unique experiences.</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn-outline">View My Work</a>
-                <a href="{% url 'download-resume' %}" class="btn-filled">Download Resume</a>
+                <a href="{% url 'download-resume' %}" class="btn-filled" download>Download Resume</a>
             </div>
-            <div class="social-icons">
-                <a href="https://github.com/shreyav0304" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
+            <div class="social-icons" role="navigation" aria-label="Social media links">
+                <a href="https://github.com/shreyav0304" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile"><i class="fab fa-github"></i></a>
             </div>
         </section>
 
-        <section id="about">
-            <h2>About Me</h2>
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Me</h2>
             <div class="about-content card">
                 <p>I'm a passionate and results-driven full-stack developer with a strong focus on building modern, user-friendly applications. With expertise in <strong>Python</strong>, <strong>Django</strong>, and <strong>JavaScript</strong>, I thrive on creating seamless digital experiences from front to back. My goal is to craft clean, efficient, and scalable code that solves real-world problems.</p>
                 <h3>My Journey</h3>
@@ -59,63 +63,65 @@
             </div>
         </section>
 
-        <section id="projects">
-            <h2>My Projects</h2>
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">My Projects</h2>
             <div class="projects-container">
-                <div class="project-card card">
-                    <img src="{% static 'images/project1.png' %}" alt="Image of Event Management Hub" class="project-image">
+                <article class="project-card card">
+                    <img src="{% static 'images/project1.png' %}" alt="Event Management Hub - Screenshot of the application interface" class="project-image" loading="lazy">
                     <h3>Event Management Hub</h3>
                     <p>A web application for managing events, built with Django, HTML, CSS, and JavaScript. It allows users to create, edit, and RSVP to events, featuring a user-friendly interface and real-time notifications.</p>
-                </div>
-                <div class="project-card card">
-                    <img src="{% static 'images/project2.png' %}" alt="Image of Flight Booking System" class="project-image">
+                </article>
+                <article class="project-card card">
+                    <img src="{% static 'images/project2.png' %}" alt="Flight Booking System - Screenshot of the application interface" class="project-image" loading="lazy">
                     <h3>Flight Booking System</h3>
                     <p>A full-stack web application for searching and booking flights. This project utilizes Django for the backend, managing user authentication and flight data, with a clean and intuitive front end.</p>
-                </div>
+                </article>
            </div>
         </section>
 
-        <section id="certificates">
-            <h2>My Certificates</h2>
+        <section id="certificates" aria-labelledby="certificates-heading">
+            <h2 id="certificates-heading">My Certificates</h2>
             <div class="certificates-grid">
-                <div class="certificate-card card">
+                <article class="certificate-card card">
                     <h3>All Certificates</h3>
                     <p>Click below to explore my complete set of certificates stored in Google Drive.</p>
                     <a href="https://drive.google.com/drive/folders/12zV18VyWC5lBapC0ua0SFd1NYBlNv0m6?usp=sharing" 
                        target="_blank" 
+                       rel="noopener noreferrer"
                        class="btn-filled">
                         View All Certificates
                     </a>
-                </div>
+                </article>
             </div>
         </section>
         
-        <section id="contact">
-            <h2>Contact Me</h2>
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Me</h2>
              <div class="contact-container card">
                 {% if messages %}
-                    <div class="messages">
+                    <div class="messages" role="alert" aria-live="polite">
                         {% for message in messages %}
                             <p class="{{ message.tags }}">{{ message }}</p>
                         {% endfor %}
                     </div>
                 {% endif %}
-                <form method="POST" action="{% url 'contact' %}" novalidate>
+                <form method="POST" action="{% url 'contact' %}" novalidate aria-label="Contact form">
                     {% csrf_token %}
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" aria-label="Your name">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true" aria-label="Your email address">
+                    <textarea id="message" name="message" placeholder="Your Message" required aria-required="true" aria-label="Your message" rows="5"></textarea>
                     <button type="submit" class="btn-filled">Send Message</button>
                 </form>
             </div>
         </section>
         
-        <footer>
+        <footer role="contentinfo">
             <p>&copy; 2025 Shreya. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="https://github.com/shreyav0304" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
+            <div class="footer-social" role="navigation" aria-label="Footer social media links">
+                <a href="https://github.com/shreyav0304" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile"><i class="fab fa-github"></i></a>
             </div>
         </footer>
+    </main>
 
     <script src="{% static 'js/script.js' %}?v={{ STATIC_VERSION }}" defer></script>
 </body>
